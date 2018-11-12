@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+</html>
+    <head>
+    	<link rel="stylesheet" href="MyStyle.css">
+    </head>
+    <body>
+        <nav>
+            <a href="GroceryHome.html">Home</a> |
+            <a href="Products.html">Products</a> |
+            <a href="AboutUs.html">About Us</a> |
+            <a href="Contact.html">Contact</a>
+        </nav>      
+        <header>
+            <h1>My Contact Page</h1>
+        </header>
+        <article>
+            Thank you for your interest in our grocery store. We offer delivery or call-ahead pickup services. Please provide your contact information, and indicate your family's food preferences. 
+        </article> <p>                 
+        <form action="#" method="post" id="form1">
+            <div class="div1">
+                <input type = "text" value = "JavaScript page validation" readonly="readonly" style="border-style:none; color:red;" ><br>
+                <label for="fname1" >First Name:</label><br>
+                <input type="text" name="firstname1" id="fname1"><br>
+                <label for="lname1" >Last Name:</label><br>
+                <input type="text" name="lastname1" id="lname1"><br>
+                <label for="phone1" >Phone (i.e. 123-456-7890):</label><br>
+                <input type="text" name="phone1" id="phone1" placeholder="123-456-7890"><br>
+                <label for="email1" >Email:</label><br>
+                <input type="text" name="email1" id="email1" placeholder="abc@xyz.com"><br>
+                <label for="contactpreference1" >Preferred contact method?</label><br>
+                <input type="radio" name="contactpreference1" value="phone" checked> Phone
+                <input type="radio" name="contactpreference1" value="email"> Email
+                <br><br>
+                <input type="submit" id="Submit1" value="Submit"  onclick=" validateMyPage()" />
+            </div>
+        </form>    
+        <form action="#" method="post" id="form2"  >
+            <div class="div2">
+                <input type = "text" value = "HTML5 page validation" readonly="readonly" style="border-style:none; color:red;" ><br>
+                <label for="fname2" >First Name:</label><br>
+                <input type="text" name="firstname2" id="fname2" required><br>
+                <label for="lname2" >Last Name:</label><br>
+                <input type="text" name="lastname2" id="lname2" required><br>
+                <label for="phone2" >Phone (i.e. 123-456-7890):</label><br>
+                <input type="tel" name="phone2" id="phone2" placeholder="123-456-7890" pattern='\d{3}[\-]\d{3}[\-]\d{4}' required><br>
+                <label for="email2" >Email:</label><br>
+                <input type="email" name="email2" id="email2" placeholder="abc@xyz.com" required><br>
+                <label for="contactpreference2" >Prefered contact method?</label><br>
+                <input type="radio" name="contactpreference2" value="phone" checked> Phone
+                <input type="radio" name="contactpreference2" value="email"> Email
+                <br><br>
+                <input type="submit" id="Submit2" value="Submit"  />
+            </div>
+        </form> 
+        <script>
+            function validateMyPage() {
+                var firstname1 = document.getElementById("fname1").value;
+                // if firstname1 is equal to null, the user hasn't typed anything into this field
+                if (firstname1 == "") {
+                    alert("Please enter a first name.");
+                }
+                else {
+                    alert(firstname1);
+                    var flagFirst=true;
+                }
+
+                // the following code handles validation for lastname1
+                var lastname1 = document.getElementById("lname1").value;
+                if (lastname1 == "") {
+                    alert("Please enter a last name.");
+                }
+                else {
+                    alert(lastname1);
+                    var flagLast=true;
+                }
+
+                // the following code handles validation for phone1
+                var phone1 =  document.getElementById("phone1").value;
+                if (phone1 == "") {
+                    alert("Please enter a phone number.");
+                    return false;
+                }
+                else { 
+                    var rePhone = new RegExp(/\d{3}[\-]\d{3}[\-]\d{4}/);
+                    var reResult = rePhone.test(phone1);
+                    if (reResult == false)
+                    {
+                        alert("Please provide a valid phone number in the format of: 222-222-2222.");
+                        return false;
+                    }
+                    else {
+                        alert(phone1);
+                        var flagPhone=true;
+                    }
+                } 
+
+                // the following code handles validation for email1
+                var email1 =  document.getElementById("email1").value;
+                if (email1 == "") {
+                    alert("Please enter an email address.");
+                    return false;
+                }
+                else { 
+                    var reEmail = new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/);
+                    var reResult = reEmail.test(email1);
+                    if (reResult == false) {
+                        alert("Please provide a valid email address.");
+                        return false;
+                    }
+                    else {
+                        alert(email1);
+                        var flagEmail=true;
+                    }
+                }
+                alert("Form data validated by JavaScript successfully!");
+            }
+        </script>
+    </body>
+</html>

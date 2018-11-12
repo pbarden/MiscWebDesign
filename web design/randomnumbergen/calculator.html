@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--@author D. Paul Barden-->
+        <!--COPYRIGHT D. PAUL BARDEN 2018-->
+        <script src="minimath.js"></script>
+    </head>
+    <style>
+        #myConsole {
+            height: 450px;
+            width: 900px;
+            background: black;
+            color: limegreen;
+            font-family: Consolas, monospace;
+            padding: 10px;
+            margin: 10px;
+            overflow: auto;
+        }
+    </style>
+    <body>
+        <h1>Random Number Generator</h1>
+        <p id="demo">Generate a random number! This is a unique algorithm that generates a random whole number between 1 and 100.</p>
+        <div id="myConsole">
+            This is placeholder text.
+        </div>
+        &nbsp;&nbsp;<button type="button" onclick="myConsole.innerHTML += myFunction()">Generate!</button>
+        <label for="minRand" >Minimum:</label>
+        <input type="number" name="minRand" value="1" id="minRand" required>
+        <label for="maxRand" >Maximum:</label>
+        <input type="number" name="maxRand" value="100" id="maxRand" required>
+    </body>
+    <script>
+        function myFunction() {
+            var a = 0|(document.getElementById("minRand").value);
+            var b = 0|(document.getElementById("maxRand").value);
+            var count = 1;
+
+            if (a == "" || b == "") {
+                return "<br> Please enter a valid range.";
+            } else if(a < 0 || b > 100000) {
+                return "<br> Please enter a range between 1 and 100,000.";
+            } else {
+                return "<br> " + random(a, b);
+            }
+        }
+    </script>
+</html>

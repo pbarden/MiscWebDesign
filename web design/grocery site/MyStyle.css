@@ -1,0 +1,42 @@
+nav {
+	float: right;
+	display: block;
+}
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+	width: 75px;
+}
+.div1 {
+	float:left;
+	margin: 0 0 0 20px;
+}
+.div2 {
+	float:right;
+	margin: 0 20px 0 0;
+}
+.myColumns {
+	float: left; 
+	margin: 0 20px 0 0;
+}
+.aboutUsMedia {
+	width: 250px;
+}
+footer {
+	clear:both; /*clears the float*/
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: lightgray;
+	text-align: center;
+}
+body {
+	background-color: lightsteelblue;
+}
+h1 {
+	color: green;
+	font-family: Arial;
+}

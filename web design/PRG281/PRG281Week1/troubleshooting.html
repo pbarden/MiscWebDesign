@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<div>
+<canvas id="myCanvas" width="400" height="200" style="border:1px solid#000000;">
+Your browser does nor support the canvas tag. Reload this app using Google Chrome or 
+another HTML5-supporting browser. 
+</canvas>
+</div>
+
+
+</body>
+
+<script>
+
+var mycanvas = document.getElementById("myCanvas");
+var canvas2d = mycanvas.getContext("2d"); 
+canvas2d.fillStyle = "blue";
+canvas2d.fillRect(10,10,380,180);
+
+</script>
+
+</html>

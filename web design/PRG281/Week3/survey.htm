@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Roux Academy: Survey</title>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="../_scripts/respond.min.js"></script>
+<![endif]-->
+<link href="styles/main.css" rel="stylesheet" media="screen, projection">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="scripts/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.columnizer.min.js"></script>
+<script type="text/javascript" src="scripts/html5slider.js"></script>
+<script type="text/javascript" src="scripts/custom_survey.js"></script>
+<script>
+ $(document).ready(function() {
+   $('.column').columnize({ columns: 2 });
+
+   $('#review').click(function() {
+	//-- Question 1 --
+	interestsChecked=$('.interests:checked').map(function(){
+	return $(this).val();
+	}).get();
+	$('#interestsResult').html('<strong>Interests: </strong>');
+	$('#interestsResult').append(interestsChecked.join(', '));
+
+	//-- Question 2 --
+	var theDesiredCourse = localStorage.getItem('desiredCourse');
+	theDesiredCourse='<strong>Desired: </strong>' + theDesiredCourse;
+	$('#desiredCourseResult').html(theDesiredCourse);
+
+	//-- Question 3 --
+	var theArtistLength = localStorage.getItem('artistLength');
+	//alert(theArtistLength);
+	theArtistLength='<strong>Artist: </strong>' + theArtistLength;
+	$('#artistLengthResult').html(theArtistLength);
+
+	//-- Question 4 --
+	var theHoursPractice = localStorage.getItem('hoursPractice');
+	theHoursPractice='<strong>Hours: </strong>' + theHoursPractice;
+	$('#hoursPracticeResult').html(theHoursPractice);
+
+	//-- Question 5 --
+	sharedChecked=$('.shared:checked').map(function(){
+	return $(this).val();
+	}).get();
+	$('#sharedResult').html('<strong>Shared: </strong>');
+	$('#sharedResult').append(sharedChecked.join(', '));
+	})
+
+ });
+
+// Save the selected value to localStorage
+function SaveRadioBtnValue(myVal){
+	localStorage.setItem('artistLength',myVal);
+	} 
+
+	// Update text field for slider
+	function printValue(sliderID, textbox) {
+	var x = document.getElementById(textbox);
+	var y = document.getElementById(sliderID);
+	x.value = y.value;
+	localStorage.setItem('hoursPractice',x.value);
+	}
+
+	window.onload = function() { 
+	printValue('hoursPractice', 'hoursPracticeValue');
+	}
+
+  function clearLocalStorage(){
+	localStorage.interests = "";
+	localStorage.desiredCourse = "";
+	localStorage.artistLength = "";
+	localStorage.hoursPractice = "";
+	localStorage.shared = "";
+	}
+  function colorBlue(x) {
+	x.style.color = "blue";
+	}
+
+	function colorBlack(x) {
+	x.style.color = "black";
+	}
+</script>
+</head>
+<body>
+<header class="aboutHeader pageHeader">
+  <h1>Roux Academy of Art and Design<a href="/index.htm" title="home"></a></h1>
+  <nav id="pageNav" class="cf">
+    <ul>
+      <li><a href="" title="programs">Programs</a></li>
+      <li><a href="" title="admissions">Admissions</a></li>
+      <li><a href="" title="student portal">Student Portal</a></li>
+      <li><a href="" title="campus portal">Campus</a></li>
+      <li><a href="" title="alumni">Alumni</a></li>
+      <li><a href=""  title="about Roux Academy">About</a></li>
+    </ul>
+  </nav>
+</header>
+<article id="mainContent">
+  <h1>Student Survey Cube</h1>
+  <p>We&rsquo;ve been providing fine art and design education for over 150 years, but we're very much focused on the present and future. Please take the short survey below to help us better understand&#8212;and fulfill&#8212;your desires and needs. </p>
+  <div id="theArt">
+    <div id="cube" class="show-front">
+      <form  id="theForm" method="post" action="">
+        <div class="front panel">
+          <div class="innerContainer">
+            <h2>Q 1/5</h2>
+            <p>What subject(s) are you most interested in? <br>
+              (Check as many as you like.)</p>
+            <div class="column">
+              <p>
+                <label>
+                  <input name="interests_" type="checkbox" class="interests" id="interests_0" value="Architecture" />
+                  Architecture</label>
+              </p>
+              <p>
+                <label>
+                  <input name="interests_" type="checkbox" class="interests" id="interests_1" value="Ceramics"/ >
+                  Ceramics</label>
+              </p>
+              <p>
+                <label>
+                  <input name="interests_" type="checkbox" class="interests" id="interests_2" value="Film/Video" / >
+                  Film/Video</label>
+              </p>
+              <p>
+                <label>
+                  <input name="interests_" type="checkbox" class="interests" id="interests_3" value="Glass" />
+                  Glass</label>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="back cf panel">
+          <div class="innerContainer">
+            <h2>Q 2/5</h2>
+            <p>What area of study didn’t you see that you wish you did?</p>
+            <p>
+              <input id="desiredCourse" type="text" placeholder="Desired course" /></p>
+          </div>
+        </div>
+        <div class="right cf panel">
+          <div class="innerContainer">
+            <h2>Q 3/5</h2>
+            <p>How long have you thought of yourself as an artist?</p>
+           <p>
+              <input type="radio" id="artistLength1" name="artistLength" value="Since I was a kid" onchange="SaveRadioBtnValue(value)"/>
+              <label>Since I was a kid.</label>
+            </p> 
+            <p>
+              <input type="radio" id="artistLength2" name="artistLength" value="Since high school" onchange="SaveRadioBtnValue(value)" />
+              <label>Since high school.</label>
+            </p>
+            <p>
+              <input type="radio" id="artistLength3" name="artistLength" value="Less than a year" onchange="SaveRadioBtnValue(value)" />
+              <label>Less than a year.</label>
+            </p>
+            <p>
+              <input type="radio" id="artistLength4" name="artistLength" value="All my life" onchange="SaveRadioBtnValue(value)" />
+              <label>All my life.</label>
+            </p>
+            <p>
+              <input type="radio" id="artistLength5" name="artistLength" value="I don't" onchange="SaveRadioBtnValue(value)" />
+              <label>I don't.</label>
+            </p>
+          </div>
+        </div>
+        <div class="left cf panel">
+          <div class="innerContainer">
+            <h2>Q 4/5</h2>
+            <p>How many hours a day do you practice your art?</p>
+            <p>
+              <input type="range" min="0" max="24" value="0" id="hoursPractice" onchange="printValue('hoursPractice','hoursPracticeValue')" />
+              </p>
+              <p>
+              <input type="text" id="hoursPracticeValue" placeholder="Move slider from 0 to 24 hours" />
+              </p>              
+          </div>
+        </div>
+        <div class="top cf panel">
+          <div class="innerContainer">
+            <h2>Q 5/5</h2>
+            <p>Who have you shared your work with?<br>
+              (Check all that apply.)</p>
+              <div class="column">
+                <p>
+                <label>
+                <input class="shared" type="checkbox" name="viewers_" value="Family" id="viewers_0" />
+                Family</label>
+                </p>
+                <p>
+                <label>
+                <input class="shared" type="checkbox" name="viewers_" value="Friends" id="viewers_0" />
+                Friends</label>
+                </p>
+                <p>
+                <label>
+                <input class="shared" type="checkbox" name="viewers_" value="Teachers" id="viewers_0" />
+                Teachers</label>
+                </p>
+                <p>
+                <label>
+                <input class="shared" type="checkbox" name="viewers_" value="No one" id="viewers_0" />
+                No one</label>
+                </p>
+                </div>              
+          </div>
+          <p class="show-buttons">
+            <input id="review" type="button" class="show-bottom alignRight" value="Save to localStorage" />
+            </p>           
+        </div>
+        <div class="bottom cf panel">
+          <div class="innerContainer">
+            <h2>Review / Submit</h2>
+            <p>Please review your responses.</p>
+            <table width="100%">
+              <tr>
+                <td width="10%">Q1:</td>
+                <td id="interestsResult" width="45%"><strong>Interests: </strong></td>
+                <td width="45%" class="show-buttons"><label onmouseover="colorBlue(this)" onmouseout="colorBlack(this)">What subjects are you most interested in?</label></td>
+              </tr>
+              <tr>
+                <td>Q2:</td>
+                <td id="desiredCourseResult"><strong>Desired: </strong></td>
+                <td class="show-buttons"><label onmouseover="colorBlue(this)" onmouseout="colorBlack(this)">What area of study didn’t you see that you wish you did?</label></td>
+              </tr>
+              <tr>
+                <td>Q3</td>
+                <td id="artistLengthResult"><strong>Artist: </strong></td>
+                <td class="show-buttons"><label onmouseover="colorBlue(this)" onmouseout="colorBlack(this)">How long have you thought of yourself as an artist?</label></td>
+              </tr>
+              <tr>
+                <td>Q4</td>
+                <td id="hoursPracticeResult"><strong>Hours: </strong></td>
+                <td class="show-buttons"><label onmouseover="colorBlue(this)" onmouseout="colorBlack(this)">How many hours a day do you practice your art?</label></td>
+              </tr>
+              <tr>
+                <td>Q5</td>
+                <td id="sharedResult"><strong>Shared: </strong></td>
+                <td class="show-buttons"><label onmouseover="colorBlue(this)" onmouseout="colorBlack(this)">Who have you shared your work with?</label></td>
+              </tr>
+            </table>
+            <p>Thank you for taking our survey.</p>
+            <p class="show-buttons">
+              <input id="clear" type="submit" class="show-bottom alignRight" value="Clear localStorage" onclick="clearLocalStorage()" />
+              </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<aside>
+  <section class="academic info">
+    <h2>Academic Links</h2>
+    <ul>
+      <li><a href="" title="undergraduate degrees">Undergraduate Degrees</a></li>
+      <li><a href="" title="Graduate Degrees">Graduate Degree Programs</a></li>
+      <li><a href="" title="Continuing education">Continuing Education</a></li>
+      <li><a href="" title="Faculty">Faculty Profiles</a></li>
+      <li><a href="" title="Application requirements">Application Requirements</a></li>
+      <li><a href="" title="Study abroad programs">Study Abroad Programs</a></li>
+      <li><a href="" title="Internship programs">Internship Programs</a></li>
+      <li><a href="" title="Academic calendar">Academic Calendar</a></li>
+    </ul>
+  </section>
+  <section class="connect info">
+    <h2>Connect with us</h2>
+    <ul>
+      <li><a href="" title="Follow us!" target="_blank" class="twitter">Twitter</a></li>
+      <li><a href="" title="Google Plus" target="_blank" class="google">Google Plus</a></li>
+      <li><a href="" title="Be our friend" target="_blank" class="facebook">Facebook</a></li>
+      <li><a href="" title="Let's connect" target="_blank" class="linked">LinkedIn</a></li>
+    </ul>
+  </section>
+  <section class="find info">
+    <h2>Find out more</h2>
+    <ul>
+      <li><a href="" title="Take a campus tour">Take a campus tour</a></li>
+      <li><a href="" title="course catalog">Download a course catalog</a></li>
+      <li><a href="" title="Apply now">Apply now</a></li>
+    </ul>
+  </section>
+</aside>
+<footer id="pageFooter" class="cf">
+ 
+  <p>&copy;Copyright  Roux Academy of Art &amp; Design.  All rights reserved.<a href="privacy.htm" title="privacy statement"> Privacy Statement</a> |<a href="legal.htm" title="legal terms"> Legal Terms and Conditions</a> |<a href="disclosures.htm" title="student outcomes and disclosures"> Student Outcomes/Disclosures</a></p>
+</footer>
+</body>
+</html>

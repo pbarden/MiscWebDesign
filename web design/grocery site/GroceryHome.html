@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <!-- The author of this code is: D. Paul Barden -->
+<head>
+    <link rel="stylesheet" href="MyStyle.css">
+</head>            
+<body>
+    <nav>
+        <a href="GroceryHome.html">Home</a> |
+        <a href="Products.html">Products</a> |
+        <a href="AboutUs.html">About Us</a> |
+        <a href="Contact.html">Contact</a>
+    </nav>           
+    <header>
+        <h1> My Grocery Site </h1>
+    </header>
+    <img src="images/fruits-grocery-bananas-market.jpg" alt="bananas at market" height="100" width="150" align="right">
+    <article>
+        This is web content about a grocery store that might be in any town. The store stocks fresh produce, as well as essential grocery items. Below are category lists of products you can find in the grocery store. Join our mailing list to receive updates on weekly specials and produce deliveries. We offer delivery and speedy pick-up service. Visit the Contact page to sign up.
+    </article>
+    <div class="myColumns">
+        <ul>
+            <li>Bread</li>
+            <li>Juice</li>
+            <li>Cereal</li>
+        </ul>
+    </div>
+    <div class="myColumns">
+        <ul>
+            <li>Apples</li>
+            <li>Bananas</li>
+            <li>Avocados</li>
+        </ul>
+    </div>
+        
+    <div class="myColumns">
+        <ul>
+            <li>Rice</li>
+            <li>Olive Oil</li>
+            <li>Lettuce</li>
+        </ul>
+        </div>
+    <form action="#" onsubmit="EmailSignUp()">
+        <div>
+            Sign-Up for our Email Newsletter<br>
+            <input type="email" name="emailNewsletter" placeholder="Enter a valid email address"><br>
+            <input type="submit" value="Sign-Up">
+        </div>
+        <br><br>
+        <div class="myColumns ">
+            <select id="mySiteColor" onChange="changeColor(this.value)">
+                <option value="">-- Select a color --</option>
+                <option value="blue">Blue</option>
+                <option value="yellow">Yellow</option>
+                <option value="red">Red</option>
+            </select>
+        </div>         
+    </form>
+    <script>
+        function EmailSignUp() {
+            alert("The email format is correct!");
+        }
+        function changeColor(value) {
+	        var myColor = document.getElementById("mySiteColor").value;
+	        document.body.style.color = value;
+        }
+    </script>  
+</body>    
+</html>

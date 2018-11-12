@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--@author paulb-->
+<html>
+<head>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+    <div>
+        <canvas width="800" height="800" id="myCanvas"> 
+        </canvas>
+    </div>
+    <div>
+        <button onclick="myFunction()">Generate</button>
+        <button onclick="clearMyCanvas()">Clear</button>
+    </div>
+</body>
+<script>
+    function myFunction() {
+        var context = $('#myCanvas')[0].getContext("2d");
+        context.beginPath();
+        context.moveTo(400,400);
+        var currentX = 400;
+        var currentY = 400;
+        for (var i = 0; i < 10000; i++) {
+            var r = Math.random();
+            console.log(r);
+            if (r < 0.25) {
+                currentX -= 3;
+            } else if (r < 0.5) {
+                currentX += 3;
+            } else if (r < 0.75) {
+                currentY -= 3;
+            } else {
+                currentY += 3;
+            }
+            console.log('Moving to ' + currentX + ' ' + currentY);
+            context.lineTo(currentX, currentY);
+        }
+        context.stroke();
+    }
+    function clearMyCanvas() {
+        var context = $('#myCanvas')[0].getContext("2d");
+        context.clearRect(0, 0, 800, 800);
+    }
+</script>
+</html>

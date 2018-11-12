@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        canvas {
+	        border-style: solid;
+	        border-width: 10px;
+    	    border-color: red;
+        }
+    </style>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+    <div>
+        <canvas id="myCanvas" width="400" height="200"> 
+            Your browser does not support the canvas tag. Reload this app using Google Chrome or another HTML5-supporting browser.
+        </canvas>
+        <br/>
+        <input type="button" id="myButton" value="change color" />
+    </div>
+</body>
+<script>
+    var mycanvas = document.getElementById("myCanvas");
+    var canvas2d = mycanvas.getContext("2d"); 
+    canvas2d.fillStyle = "blue";
+    canvas2d.fillRect(10,10,380,180);
+
+    // Create gradient
+    var gradient=canvas2d.createRadialGradient(200,125,15,200,125,200);
+    gradient.addColorStop(0,"yellow ");
+    gradient.addColorStop(1,"blue");
+
+    // Fill with gradient
+    canvas2d.fillStyle=gradient;
+    canvas2d.fillRect(10,10,380,180);
+
+    //-- Add text to the canvas --
+    canvas2d.font = "30px Comic Sans MS";
+    canvas2d.fillStyle = "black";
+    canvas2d.fillText("Hello World", 125,125);
+</script>
+<script>
+    $(function() {
+        $("#myButton").click( function() {
+            alert('changing the color with the button click');
+            var mycanvas = document.getElementById("myCanvas");
+	        var canvas2d = mycanvas.getContext("2d");
+	        canvas2d.fillStyle = "blue";
+    	    canvas2d.fillRect(10,10,380,180);
+        });
+    });
+</script>
+</html>
